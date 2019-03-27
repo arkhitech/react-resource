@@ -49,6 +49,7 @@ export default class Action {
         url: `${getPathFromUrl(apiUrl)}?${apiUrlQuery}`,
         options: {
           method: this.config.method || 'get',
+          headers: (this.data && this.data.headers) || {}
         },
         resolveFn: argsConfig.resolveFn,
         rejectionFn: argsConfig.rejectionFn,
