@@ -28,8 +28,13 @@ export const defaults = {
 export default function request(url, options = {}) {
   return fetch(url, merge(options, defaults))
     .then(checkStatus)
-    .then(parseJSON)
-    .then((data) => (data));
+    .then((response) => {
+        if (!isJSON(response.headers)) {
+          return {results: response.text(), headers: response.headers};
+        } else {
+          return {results: response.json(), headers: response.headers};
+        }
+    });
 }
 
 /**
