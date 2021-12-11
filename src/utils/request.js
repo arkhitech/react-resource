@@ -29,12 +29,17 @@ export default function request(url, options = {}) {
   return fetch(url, merge(options, defaults))
     .then(checkStatus)
     .then((response) => {
-        if (!isJSON(response.headers)) {
-          return {results: response.text(), headers: response.headers};
-        } else {
-          return {results: response.json(), headers: response.headers};
-        }
-    });
+      let responseBodyPromise = null;
+      if (!isJSON(response.headers)) {
+        responseBodyPromise = response.text();
+      } else {
+        responseBodyPromise = response.json();
+      }
+      let resultsPromise = responseBodyPromise.then((responseContent) => {
+        return { results: responseContent, headers: response.headers };
+      });
+      return Promise.all([responseBodyPromise, resultsPromise]);
+    }).then(([responseBody, results]) => results);
 }
 
 /**

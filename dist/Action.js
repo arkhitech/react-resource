@@ -176,12 +176,12 @@ var Action = function () {
       var _this3 = this;
 
       return promise.then(function (data) {
-        if ((0, _isArray2.default)(data)) {
-          return (0, _map2.default)(data, function (i) {
+        if (data.results) if ((0, _isArray2.default)(data.results)) {
+          return (0, _map2.default)(data.results, function (i) {
             return new _this3.Model(i);
           });
-        } else if ((0, _isObject2.default)(data)) {
-          return new _this3.Model(data);
+        } else if ((0, _isObject2.default)(data.results)) {
+          return new _this3.Model(data.results);
         }
 
         return data;

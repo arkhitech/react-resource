@@ -46,7 +46,7 @@ export default class Action {
 
       // Config
       const config = {
-        url: `${getPathFromUrl(apiUrl)}?${apiUrlQuery}`,
+        url: `${ getPathFromUrl(apiUrl) }?${ apiUrlQuery }`,
         options: {
           method: this.config.method || 'get',
           headers: (this.data && this.data.headers) || {}
@@ -121,11 +121,12 @@ export default class Action {
 
   makeInstances(promise) {
     return promise.then((data) => {
-      if (isArray(data)) {
-        return map(data, (i) => new this.Model(i));
-      } else if (isObject(data)) {
-        return new this.Model(data);
-      }
+      if (data.results)
+        if (isArray(data.results)) {
+          return map(data.results, (i) => new this.Model(i));
+        } else if (isObject(data.results)) {
+          return new this.Model(data.results);
+        }
 
       return data;
     });

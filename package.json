@@ -1,13 +1,13 @@
 {
   "name": "react-resource",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "description": "A factory which creates a resource object that lets you interact with RESTful server-side data sources.",
   "scripts": {
     "build": "babel ./src --out-dir ./dist",
     "prepublish": "npm run build",
     "start": "webpack-dev-server --content-base ./static/ --port 3000"
   },
-  "main": "dist/index.js",
+  "main": "src/index.js",
   "dependencies": {
     "lodash": "^4.17.4",
     "promise": "^8.0.0",
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/cidevant/react-resource.git"
+    "url": "git+ssh://git@github.com/arkhitech/react-resource.git"
   },
   "keywords": [
     "React",
@@ -38,7 +38,7 @@
     "Promise",
     "Api"
   ],
-  "author": "Cidevant Von Goethe <cidevant@mail.ru>",
+  "author": "Cidevant Von Goethe <cidevant@mail.ru>, Hisham Malik <info@arkhitech.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cidevant/react-resource/issues"
