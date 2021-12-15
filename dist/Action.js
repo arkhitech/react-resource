@@ -8,6 +8,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         Action
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ========================================================================== */
 
+// import Promise from 'promise';
+
+
 var _isEmpty = require('lodash/isEmpty');
 
 var _isEmpty2 = _interopRequireDefault(_isEmpty);
@@ -32,9 +35,7 @@ var _map = require('lodash/map');
 
 var _map2 = _interopRequireDefault(_map);
 
-var _promise = require('promise');
-
-var _promise2 = _interopRequireDefault(_promise);
+require('es6-promise/auto');
 
 var _request = require('./utils/request');
 
@@ -81,7 +82,7 @@ var Action = function () {
         kwargs[_key] = arguments[_key];
       }
 
-      return new _promise2.default(function (resolve, reject) {
+      return new Promise(function (resolve, reject) {
         // Parse action arguments
         var argsConfig = _argumentsParser2.default.apply(undefined, kwargs);
 
